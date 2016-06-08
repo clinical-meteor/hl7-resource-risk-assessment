@@ -1,13 +1,13 @@
-##clinical:hl7-resource-organization
+##clinical:hl7-resource-risk-assessment
 
-HL7 FHIR Resource - Organization
+HL7 FHIR Resource - Risk Assessment
 
 ===============================
 #### Installation  
 
 ````bash
 # to add hl7 resource schemas and rest routes
-meteor add clinical:hl7-resource-organization
+meteor add clinical:hl7-resource-risk-assessment
 
 # to initialize default data
 INITIALIZE=true meteor
@@ -21,7 +21,7 @@ If you're working with HL7 FHIR Resources, we recommend using [Postman](https://
 ===============================
 #### Conformance Statement  
 
-The resource in this package implements the FHIR Patient Resource schema provided at  [https://www.hl7.org/fhir/organization.html](https://www.hl7.org/fhir/organization.html).  
+The resource in this package implements the FHIR Patient Resource schema provided at  [https://www.hl7.org/fhir/riskassessment.html](https://www.hl7.org/fhir/riskassessment.html).  
 
 ===============================
 #### Licensing  

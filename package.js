@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:hl7-resource-risk-assessment',
-  version: '1.1.0',
+  version: '1.3.1',
   summary: 'HL7 FHIR Resource - Risk Assessment',
   git: 'https://github.com/clinical-meteor/hl7-resource-risk-assessment',
   documentation: 'README.md'
@@ -17,12 +17,13 @@ Package.onUse(function (api) {
   api.use('prime8consulting:meteor-oauth2-server@0.0.2');
 
   api.use('clinical:base-model@1.3.5');
-  api.use('clinical:hl7-resource-datatypes@0.4.2');
+  api.use('clinical:hl7-resource-datatypes@0.4.4');
 
   api.addFiles('lib/hl7-resource-risk-assessment.js', ['client', 'server']);
   api.addFiles('server/rest.js', 'server');
   api.addFiles('server/initialize.js', 'server');
 
-  api.export('Organizations');
-  api.export('OrganizationSchema');
+  api.export('RiskAssessment');
+  api.export('RiskAssessments');
+  api.export('RiskAssessmentSchema');
 });

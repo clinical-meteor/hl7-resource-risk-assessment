@@ -43,7 +43,7 @@ dependencies:
     - cd helloworld && meteor add dispatch:mocha practicalmeteor:chai
     - cd helloworld && meteor add clinical:hl7-resource-risk-assessment 
     - cd helloworld && mkdir imports 
-    - cd helloworld && cp ../tests/integration.tests.js imports/
+    - cd helloworld && cp ../tests/RiskAssessments.tests.js imports/
     
 ## Customize test commands
 test:

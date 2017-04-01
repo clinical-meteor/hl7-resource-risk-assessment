@@ -22,11 +22,8 @@ Package.onUse(function (api) {
   api.addFiles('server/rest.js', 'server');
   api.addFiles('server/initialize.js', 'server');
 
-  // clinical:fhir-vault-server is a licensed product, so may not exist
-  try {
+  if(Package['clinical:fhir-vault-server']){
     api.use('clinical:fhir-vault-server@0.0.3');        
-  } catch (error) {
-    console.log('clinical:fhir-vault-server not found; Skipping.');
   }
 
   api.export('RiskAssessment');

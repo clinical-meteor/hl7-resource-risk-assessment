@@ -10,7 +10,7 @@ describe('clinical:hl7-resource-risk-assessment', function () {
   afterEach(function () {
     //console.log('afterEach');
   });
-  it('renders correctly with simple data', function () {
+  it('exists globally', function () {
     expect(RiskAssessments).to.exist;
   });
 });

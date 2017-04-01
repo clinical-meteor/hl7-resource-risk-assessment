@@ -42,7 +42,8 @@ dependencies:
     - cd helloworld && meteor add clinical:hl7-resource-risk-assessment clinical:hl7-resource-datatypes
     - cd helloworld/packages && ls -la
     - cd helloworld && starrynight autoconfig
-    
+    - cd helloworld && meteor npm install
+
 ## Customize test commands
 test:
   pre:

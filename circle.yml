@@ -11,6 +11,7 @@ machine:
     CXX: g++-4.8
     DISPLAY: :99.0
     NPM_PREFIX: /home/ubuntu/nvm/v0.10.33
+    TEST_BROWSER_DRIVER: chrome
 
 #general:
 #  build_dir: helloworld
@@ -38,9 +39,13 @@ dependencies:
     - cd helloworld
     - cd helloworld && ls -la
     - cd helloworld && meteor npm install
-    - cd helloworld && meteor add clinical:hl7-resource-risk-assessment practicalmeteor:mocha
-    - cd helloworld && git clone http://github.com/clinical-meteor/hl7-resource-risk-assessment packages/hl7-resource-risk-assessment
+    - cd helloworld && npm i --save-dev selenium-webdriver@3.0.0-beta-2 chromedriver
+    - cd helloworld && dispatch:mocha practicalmeteor:chai
+    - cd helloworld && meteor add clinical:hl7-resource-risk-assessment 
+    - cd helloworld && mkdir imports 
+    - cd helloworld && cp ../tests/integration.tests.js imports/
 
+    #- cd helloworld && git clone http://github.com/clinical-meteor/hl7-resource-risk-assessment packages/hl7-resource-risk-assessment
     #- cd helloworld/client && rm main.*
     #- cd helloworld && meteor add anti:gagarin@0.4.12
     #- cd helloworld/packages && ls -la
@@ -53,4 +58,4 @@ test:
           background: true
     - sleep 80
   override:
-    - cd helloworld && starrynight run-tests --type package-verification
+    - cd helloworld && meteor test --once --driver-package dispatch:mocha 

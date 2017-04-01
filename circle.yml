@@ -53,9 +53,9 @@ dependencies:
     
 ## Customize test commands
 test:
-  pre:
-    - cd helloworld && meteor:
-          background: true
-    - sleep 80
+  #pre:
+  #  - cd helloworld && meteor:
+  #        background: true
+  #  - sleep 80
   override:
     - cd helloworld && meteor test --once --driver-package dispatch:mocha 

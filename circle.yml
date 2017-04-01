@@ -44,18 +44,8 @@ dependencies:
     - cd helloworld && meteor add clinical:hl7-resource-risk-assessment 
     - cd helloworld && mkdir imports 
     - cd helloworld && cp ../tests/integration.tests.js imports/
-
-    #- cd helloworld && git clone http://github.com/clinical-meteor/hl7-resource-risk-assessment packages/hl7-resource-risk-assessment
-    #- cd helloworld/client && rm main.*
-    #- cd helloworld && meteor add anti:gagarin@0.4.12
-    #- cd helloworld/packages && ls -la
-    #- cd helloworld && starrynight autoconfig
     
 ## Customize test commands
 test:
-  #pre:
-  #  - cd helloworld && meteor:
-  #        background: true
-  #  - sleep 80
   override:
     - cd helloworld && meteor test --once --driver-package dispatch:mocha 

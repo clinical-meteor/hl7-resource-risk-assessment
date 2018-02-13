@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:hl7-resource-risk-assessment',
-  version: '1.4.4',
+  version: '1.4.5',
   summary: 'HL7 FHIR Resource - Risk Assessment',
   git: 'https://github.com/clinical-meteor/hl7-resource-risk-assessment',
   documentation: 'README.md'
@@ -31,6 +31,7 @@ Package.onUse(function (api) {
   api.addFiles('lib/RiskAssessments.js', ['client', 'server']);
   api.addFiles('server/rest.js', 'server');
   api.addFiles('server/initialize.js', 'server');
+  api.addFiles('server/methods.js', 'server');
 
   if(Package['clinical:fhir-vault-server']){
     api.use('clinical:fhir-vault-server@0.0.3');

@@ -22,11 +22,7 @@ export {
   DynamicRoutes, 
 
   RiskAssessmentsPage,
-  RiskAssessmentsTable,
-
-  RiskAssessment,
-  RiskAssessments,
-  RiskAssessmentSchema
+  RiskAssessmentsTable
 };
 
 

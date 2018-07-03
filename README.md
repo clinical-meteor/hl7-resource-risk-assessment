@@ -1,4 +1,4 @@
-##clinical:hl7-resource-risk-assessment
+## clinical:hl7-resource-risk-assessment
 
 #### Licensing  
 ![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)

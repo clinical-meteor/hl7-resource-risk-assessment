@@ -9,7 +9,7 @@
 
 
 #### API Reference  
-The resource in this package implements Practitioner resource schema, specified at [https://www.hl7.org/fhir/riskassessment.html](https://www.hl7.org/fhir/riskassessment.html). 
+The resource in this package implements Practitioner resource schema, specified at [https://www.hl7.org/fhir/DSTU2/riskassessment.html](https://www.hl7.org/fhir/DSTU2/riskassessment.html). 
 
 
 #### Installation  

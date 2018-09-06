@@ -1,6 +1,6 @@
 Package.describe({
   name: 'clinical:hl7-resource-risk-assessment',
-  version: '1.5.0',
+  version: '1.5.1',
   summary: 'HL7 FHIR Resource - Risk Assessment',
   git: 'https://github.com/clinical-meteor/hl7-resource-risk-assessment',
   documentation: 'README.md'

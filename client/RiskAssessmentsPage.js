@@ -9,6 +9,8 @@ import ReactMixin  from 'react-mixin';
 import RiskAssessmentDetail from './RiskAssessmentDetail';
 import RiskAssessmentsTable from './RiskAssessmentsTable';
 
+Session.setDefault('selectedRiskAssessmentId', false);
+
 export class RiskAssessmentsPage extends React.Component {
   getMeteorData() {
     let data = {
@@ -21,10 +23,16 @@ export class RiskAssessmentsPage extends React.Component {
       },
       tabIndex: Session.get('riskAssessmentPageTabIndex'),
       riskAssessmentSearchFilter: Session.get('riskAssessmentSearchFilter'),
-      currentRiskAssessment: Session.get('selectedRiskAssessment')
+      selectedRiskAssessmentId: Session.get('selectedRiskAssessmentId'),
+      fhirVersion: Session.get('fhirVersion'),
+      selectedRiskAssessment: false
     };
 
-    console.log('Glass', Glass)
+    if (Session.get('selectedRiskAssessmentId')){
+      data.selectedDevice = RiskAssessments.findOne({_id: Session.get('selectedRiskAssessmentId')});
+    } else {
+      data.selectedDevice = false;
+    }
 
     data.style = Glass.blur(data.style);
     data.style.appbar = Glass.darkroom(data.style.appbar);
@@ -38,7 +46,7 @@ export class RiskAssessmentsPage extends React.Component {
   }f
 
   onNewTab(){
-    Session.set('selectedRiskAssessment', false);
+    Session.set('selectedRiskAssessmentId', false);
     Session.set('riskAssessmentUpsert', false);
   }
 
@@ -52,13 +60,21 @@ export class RiskAssessmentsPage extends React.Component {
             <CardText>
               <Tabs id="riskAssessmentsPageTabs" default value={this.data.tabIndex} onChange={this.handleTabChange} initialSelectedIndex={1}>
                <Tab className='newRiskAssessmentTab' label='New' style={this.data.style.tab} onActive={ this.onNewTab } value={0}>
-                 <RiskAssessmentDetail id='newRiskAssessment' />
+                 <RiskAssessmentDetail 
+                  id='newRiskAssessment'
+                  fhirVersion={ this.data.fhirVersion }
+                  riskAssessment={ this.data.selectedRiskAssessment }
+                  riskAssessmentId={ this.data.selectedRiskAssessmentId }  />
                </Tab>
                <Tab className="riskAssessmentListTab" label='RiskAssessments' onActive={this.handleActive} style={this.data.style.tab} value={1}>
                 <RiskAssessmentsTable />
                </Tab>
                <Tab className="riskAssessmentDetailsTab" label='Detail' onActive={this.handleActive} style={this.data.style.tab} value={2}>
-                 <RiskAssessmentDetail id='riskAssessmentDetails' />
+                 <RiskAssessmentDetail 
+                  id='riskAssessmentDetails' 
+                  fhirVersion={ this.data.fhirVersion }
+                  riskAssessment={ this.data.selectedRiskAssessment }
+                  riskAssessmentId={ this.data.selectedRiskAssessmentId } />  
                </Tab>
              </Tabs>
             </CardText>

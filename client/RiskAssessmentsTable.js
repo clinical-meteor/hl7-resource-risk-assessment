@@ -5,7 +5,7 @@ import { ReactMeteorData } from 'meteor/react-meteor-data';
 import { Card, CardMedia, CardTitle, CardText, CardActions } from 'material-ui/Card';
 
 import { Table } from 'react-bootstrap';
-
+import { get } from 'lodash';
 
 export default class RiskAssessmentsTable extends React.Component {
 
@@ -29,21 +29,30 @@ export default class RiskAssessmentsTable extends React.Component {
 
   rowClick(id){
     Session.set('riskAssessmentsUpsert', false);
-    Session.set('selectedRiskAssessment', id);
+    Session.set('selectedRiskAssessmentId', id);
     Session.set('riskAssessmentPageTabIndex', 2);
   };
   render () {
     let tableRows = [];
     for (var i = 0; i < this.data.riskAssessments.length; i++) {
+
+      let newRow = {
+        date: get(this.data.riskAssessments[i], 'date'),
+        subjectDisplay: get(this.data.riskAssessments[i], 'subject.display'),
+        conditionDisplay: get(this.data.riskAssessments[i], 'condition.display'),
+        performerDisplay: get(this.data.riskAssessments[i], 'performer.display'),
+        predictionOutcome: get(this.data.riskAssessments[i], 'prediction[0].outcome.text'),
+        probabilityDecimal: get(this.data.riskAssessments[i], 'prediction[0].probabilityDecimal'),
+      }
       tableRows.push(
         <tr key={i} className="riskAssessmentRow" style={{cursor: "pointer"}} onClick={ this.rowClick.bind('this', this.data.riskAssessments[i]._id)} >
 
-          <td className='subjectDisplay'>{this.data.riskAssessments[i].subject.display }</td>
-          <td className='conditionDisplay'>{this.data.riskAssessments[i].condition.display }</td>
-          <td className='performerDisplay'>{this.data.riskAssessments[i].performer.display }</td>
-          <td className='predictionOutcome'>{this.data.riskAssessments[i].prediction[0] ? this.data.riskAssessments[i].prediction[0].outcome.text :  '' }</td>
-          <td className='probabilityDecimal'>{this.data.riskAssessments[i].prediction[0] ? this.data.riskAssessments[i].prediction[0].probabilityDecimal :  '' }</td>
-          <td><span className="barcode">{ this.data.riskAssessments[i]._id }</span></td>
+          <td className='date'>{ newRow.date }</td>
+          <td className='subjectDisplay'>{ newRow.subjectDisplay }</td>
+          <td className='conditionDisplay'>{ newRow.conditionDisplay }</td>
+          <td className='performerDisplay'>{ newRow.performerDisplay }</td>
+          <td className='predictionOutcome'>{ newRow.predictionOutcome }</td>
+          <td className='probabilityDecimal'>{ newRow.probabilityDecimal }</td>
         </tr>
       )
     }
@@ -52,12 +61,12 @@ export default class RiskAssessmentsTable extends React.Component {
       <Table id='riskAssessmentsTable' responses hover >
         <thead>
           <tr>
-            <th className='subjectDisplay'>subject</th>
-            <th className='conditionDisplay'>condition</th>
-            <th className='performerDisplay'>performer</th>
-            <th className='predictionOutcome'>outcome</th>
-            <th className='probabilityDecimal'>probability</th>
-            <th>_id</th>
+            <th className='date'>Date</th>
+            <th className='subjectDisplay'>Subject</th>
+            <th className='conditionDisplay'>Condition</th>
+            <th className='performerDisplay'>Performer</th>
+            <th className='predictionOutcome'>Outcome</th>
+            <th className='probabilityDecimal'>Probability</th>
           </tr>
         </thead>
         <tbody>

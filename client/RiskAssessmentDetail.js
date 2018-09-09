@@ -384,7 +384,7 @@ export class RiskAssessmentDetail extends React.Component {
 
       RiskAssessments.update(
         {_id: this.state.riskAssessmentId}, {$set: fhirRiskAssessmentData }, {
-          validate: false, 
+          validate: true, 
           filter: false, 
           removeEmptyStrings: false
         }, function(error, result) {
@@ -405,7 +405,7 @@ export class RiskAssessmentDetail extends React.Component {
       if(process.env.NODE_ENV === "test") console.log("create a new riskAssessment", fhirRiskAssessmentData);
 
       RiskAssessments.insert(fhirRiskAssessmentData, {
-        validate: false, 
+        validate: true, 
         filter: false, 
         removeEmptyStrings: false
       }, function(error, result) {

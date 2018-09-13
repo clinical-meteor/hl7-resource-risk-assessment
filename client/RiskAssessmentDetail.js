@@ -420,7 +420,7 @@ export class RiskAssessmentDetail extends React.Component {
 
   handleDeleteButton(){
     let self = this;
-    RiskAssessments.remove({_id: this.state.riskAssessmentId}, function(error, result){
+    RiskAssessments._collection.remove({_id: this.state.riskAssessmentId}, function(error, result){
       if (error) {
         Bert.alert(error.reason, 'danger');
       }
